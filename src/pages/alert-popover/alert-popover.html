@@ -1,0 +1,9 @@
+
+  <div class="popover-alert">
+    <div class="alert-icon" *ngIf="iconName">
+        <ion-icon name="{{ iconName }}" [style.color]="iconColor"></ion-icon>
+    </div>
+    <h4 id="alert-title">{{ title }}</h4>
+    <p id="alert-content">{{ content }}</p>
+    <button full ion-button id="ok-button" (tap)="closeMe()">OK</button>
+  </div>

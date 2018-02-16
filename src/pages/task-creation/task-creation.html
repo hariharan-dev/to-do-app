@@ -1,0 +1,55 @@
+<ion-header>
+    <ion-navbar>
+            <ion-buttons start>
+                    <button ion-button (click)="dismissPage()" id="cancel-button">
+                        Cancel
+                    </button>
+                  </ion-buttons>
+        <ion-title>Create Task</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <ion-list>
+
+        <ion-item>
+            <ion-label floating>Task Name</ion-label>
+            <ion-input type="text" [required]="true" [(ngModel)]="task.name"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>Notes</ion-label>
+            <ion-input type="text" [(ngModel)]="task.description"></ion-input>
+        </ion-item>
+
+        <ion-item>
+                <ion-label stacked>Due Date</ion-label>
+            <ion-input type="text" [(ngModel)]="task.dueDate"></ion-input>
+            <button class="select-date" ion-button outline item-end (click)="showDatePicker()">
+                Select Date
+            </button>
+        </ion-item>
+
+    </ion-list>
+    <ion-list>
+        <ion-item>
+            <ion-label>Category</ion-label>
+            <ion-select [(ngModel)]="task.category.id">
+                <div *ngFor="let category of categories">
+                    <ion-option [value]="category.id">{{category.name}}</ion-option>
+                </div>
+            </ion-select>
+            <button class="new-category" ion-button clear item-end (click)="newCategory()">
+                    <ion-icon name="md-add-circle"></ion-icon>
+                </button>
+        </ion-item>
+    </ion-list>
+</ion-content>
+
+<ion-footer>
+    <ion-row>
+            <button class="create" ion-button full (click)="createTask()">
+                    <ion-icon name="md-create"></ion-icon>
+                    Create Task
+                </button>
+    </ion-row>
+</ion-footer>

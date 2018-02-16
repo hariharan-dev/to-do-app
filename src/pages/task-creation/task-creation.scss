@@ -1,0 +1,34 @@
+page-task-creation {
+    
+    ion-list{
+        padding: 5px;
+        margin: 0px !important;
+        }
+    ion-item {
+        padding: 5px !important;
+    }
+    ion-footer {
+        [ion-button] {
+            .icon {
+                margin-right: 1rem;
+                font-weight: bold;
+            }
+        }
+    }
+    ion-icon {
+        font-size: 1.9em
+    }
+    .create {
+        background-color: #e6e4e4;
+        color: #488aff;
+    }
+    .select-date{
+        top: 11px;
+    }
+    .new-category{
+        left: 12px;
+        ion-icon {
+            font-size: 1.9em
+        }
+    }
+}

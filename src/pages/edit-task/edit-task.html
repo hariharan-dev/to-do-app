@@ -1,0 +1,76 @@
+<ion-header>
+        <ion-navbar>
+                <ion-title>Edit Task</ion-title>
+                <ion-buttons start>
+                  <button ion-button icon-only (click)="dismissPage()">
+                    Cancel
+                  </button>
+                </ion-buttons>
+              </ion-navbar>
+    </ion-header>
+    <ion-content>
+        <ion-list no-lines >
+    
+            <ion-item>
+                <ion-label floating>Task Name</ion-label>
+                <ion-input type="text" [(ngModel)]="task.name"></ion-input>
+            </ion-item>
+    
+            <ion-item>
+                <ion-label floating>Notes</ion-label>
+                <ion-input type="text" [(ngModel)]="task.description"></ion-input>
+            </ion-item>
+    
+            <ion-item no-lines>
+                    <ion-label stacked>Due Date</ion-label>
+                <ion-input type="text" [(ngModel)]="task.dueDate"></ion-input>
+                <button class="select-date" ion-button outline item-end (click)="showDatePicker()">
+                    Select Date
+                </button>
+            </ion-item>
+    
+        </ion-list>
+        <ion-list>
+            <ion-item>
+                <ion-label>Category</ion-label>
+                <ion-select [(ngModel)]="selectedCategory">
+                    <div *ngFor="let category of categories">
+                        <ion-option [value]="category.id">{{category.name}}</ion-option>
+                    </div>
+                </ion-select>
+                <button class="new-category" ion-button clear item-end (click)="newCategory()">
+                    <ion-icon name="md-add-circle"></ion-icon>
+                </button>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+    <ion-footer>
+            <ion-row>
+              <ion-col col-6>
+                <button ion-button full 
+                  class="save" (click)="saveTask()"> 
+                  <ion-icon name="ios-archive-outline"></ion-icon> Save </button>
+              </ion-col>
+              <ion-col col-6>
+                <button ion-button full class="delete" 
+                   (click)="deleteTask()"> 
+                  <ion-icon name="md-trash"></ion-icon>
+                  Delete
+                </button>
+              </ion-col>
+              <ion-col col-12 *ngIf="!task.isCompleted">
+                <button ion-button class="complete" full 
+                  (click)="completeTask()"> 
+                  <ion-icon name="md-checkmark-circle-outline"></ion-icon>
+                  COMPLETE
+                </button>
+              </ion-col>
+              <ion-col col-12 *ngIf="task.isCompleted">
+                <button ion-button class="complete" full 
+                  (click)="restoreTask()"> 
+                  <ion-icon name="ios-undo"></ion-icon>
+                   RESTORE TASK
+                </button>
+              </ion-col>
+            </ion-row> 
+    </ion-footer>

@@ -1,0 +1,33 @@
+page-alert-popover {
+  .popover-wrapper {
+    .popover-content {
+      border-radius: 4px;
+    }
+  }
+  .scroll-content {
+    overflow: auto;
+  }
+  .popover-alert {
+    padding-top: 1em;
+    text-align: center;
+    .alert-icon {
+      font-size: 3em;
+    }
+    h4 {
+      font-size: 18px;
+      margin: 0;
+      margin-bottom: 1em;
+    }
+    p {
+      color: black;
+    }
+    button {
+      background-color: #fff;
+      border-top: 1px solid #ccc;
+      color: red;
+      font-weight: 600;
+      padding-top: 4px;
+    }
+  }
+}
+

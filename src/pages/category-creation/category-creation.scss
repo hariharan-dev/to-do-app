@@ -1,0 +1,21 @@
+page-category-creation {
+    ion-list{
+        padding: 5px;
+        margin: 0px !important;
+        }
+    ion-item {
+        padding: 5px !important;
+    }
+    ion-footer {
+        [ion-button] {
+            .icon {
+                margin-right: 1rem;
+                font-weight: bold;
+            }
+        }
+    }
+    .create {
+        background-color: #e6e4e4;
+        color: #488aff;
+    }
+}
