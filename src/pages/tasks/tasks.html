@@ -1,7 +1,7 @@
 <ion-content *ngIf="tasks">
   <ion-list class="task-list" no-lines *ngIf="status != in_progress">
     <ion-item class="task" *ngFor="let task of tasks" (click)="showTask(task)">
-      <h2>{{task.name}}</h2>
+      <h3>{{task.name}}</h3>
       <p style="color:green" *ngIf="task.dueDate">{{task.dueDate | date:'EEE, dd/M/yyyy'}}</p>
       <div class="category" *ngIf="task.category.id != 'default'">
         <ion-icon name="ios-bookmark"></ion-icon>
@@ -24,8 +24,8 @@
   <div [ngSwitch]="in_progress_status">
     <ion-list class="task-list" no-lines no-padding *ngSwitchCase="'today'">
       <ion-item class="task" *ngFor="let task of todayTasks" (click)="showTask(task)">
-        <h2>{{task.name}}</h2>
-        <p style="color:lightseagreen">{{task.dueDate | date:'EEE, dd/M/yyyy'}}</p>
+        <h3>{{task.name}}</h3>
+        <p style="color:#fdba18">{{task.dueDate | date:'EEE, dd/M/yyyy'}}</p>
         <div class="category" *ngIf="task.category.id != 'default'">
             <ion-icon name="ios-bookmark"></ion-icon>
             <p>{{task.category.name}}</p>
@@ -34,7 +34,7 @@
     </ion-list>
     <ion-list class="task-list" no-padding *ngSwitchCase="'over-due'">
       <ion-item class="task" *ngFor="let task of overDueTasks" (click)="showTask(task)">
-        <h2>{{task.name}}</h2>
+        <h3>{{task.name}}</h3>
         <p style="color:red">{{task.dueDate | date:'EEE, dd/M/yyyy'}}</p>
         <div class="category" *ngIf="task.category.id != 'default'">
             <ion-icon name="ios-bookmark"></ion-icon>

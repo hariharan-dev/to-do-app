@@ -71,22 +71,21 @@ export class TasksPage extends BasePage implements OnInit {
     }
   }
 
-  ionViewDidLoad() {
+  ionViewWillEnter(){
     this.categorizeTasks();
     this.updateNotification();
   }
 
   goToTaskCreationPage() {
     this.present(TaskCreationPage, {}, () => {
-      this.ionViewDidLoad()
+      this.ionViewWillEnter()
     });
   }
 
   showTask(task: Task) {
     this.present(EditTaskPage, { task: task }, (data) => {
       if(data){
-        console.log("Edited")
-        this.ionViewDidLoad();
+        this.ionViewWillEnter();
       }
     });
   }
@@ -99,18 +98,25 @@ export class TasksPage extends BasePage implements OnInit {
   }
 
 
-
   getNotificationText() {
-    var tomorrowsDate = new Date(new Date().setDate(new Date().getDate() + 1)).toLocaleDateString();
-    //filtering only tomorrow`s tasks
-    var length = this.userService.user.tasks.
-    filter((task) => task.dueDate == tomorrowsDate && task.isCompleted != true).length;
+    var dateToMatch;
 
-    if (length){
-      if(length == 1)
+    // if changes are made from between 0 to 7am then take today`s date
+    // else take tomorrow date
+    if(new Date().getHours() <= 7)
+      dateToMatch = new Date().toLocaleDateString();
+    else
+    dateToMatch = new Date(new Date().setDate(new Date().getDate() + 1)).toLocaleDateString();
+
+    //filtering the length tasks that match the dateToMatch
+    var tomorrowTasksLength = this.userService.user.tasks.
+    filter((task) => task.dueDate == dateToMatch && task.isCompleted != true).length;
+
+    if (tomorrowTasksLength){
+      if(tomorrowTasksLength == 1)
       return "1 Task Today"
       else
-      return length + " Tasks Today"
+      return tomorrowTasksLength + " Tasks Today"
     }
     else
       return "No Tasks Today"

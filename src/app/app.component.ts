@@ -51,6 +51,7 @@ export class MyApp {
   // will take place with notification id as reference
 
   setUpNotification() {
+    // getting tomorrow`s date with 8 am as time
     var notificationTime = new Date(new Date(new Date().setHours(8,0,0,0)).setDate(new Date().getDate() + 1))
     this.localNotifications.schedule({
       id: this.userService.user.id,
@@ -64,15 +65,18 @@ export class MyApp {
   // else just updating the text to not disturb the set notfication at 8am
 
   updateNotificationTime(){
+    
     if(new Date().getHours() <= 7){
     }
     else
     {
+      // getting tomorrow`s date with 8 am as time
       var notificationTime = new Date(new Date(new Date().setHours(8,0,0,0)).setDate(new Date().getDate() + 1))
       this.localNotifications.update({
         id: this.userService.user.id,
         at: notificationTime
       })
     }
+
   }
 }

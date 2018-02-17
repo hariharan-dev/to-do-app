@@ -9,6 +9,14 @@ page-tasks {
         .task {
             margin-top: 6px;
             border-radius: 8px;
+            h3{
+                white-space: normal;
+                width: 60%;
+                padding-bottom: 5px;
+            }
+            p{
+                font-size: 1.2rem;
+            }
         }
         .category {
             position: absolute;
@@ -16,7 +24,7 @@ page-tasks {
             top: 15px;
             color: #d0bebe;
             p {
-                font-size: 14px;
+                font-size: 13px;
                 position: relative;
                 left: 20px;
                 top: -20px;
