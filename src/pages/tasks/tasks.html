@@ -13,10 +13,10 @@
   <div *ngIf="status == 'in_progress'">
     <ion-segment [(ngModel)]="in_progress_status">
       <ion-segment-button value="today">
-        Today
+        Today ({{todayTasks?.length}})
       </ion-segment-button>
       <ion-segment-button value="over-due">
-        Over-Due
+        Over-Due ({{overDueTasks?.length}})
       </ion-segment-button>
     </ion-segment>
   </div>

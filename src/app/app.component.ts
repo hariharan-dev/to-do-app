@@ -32,13 +32,13 @@ export class MyApp {
         (data) => {
           if (data.categories) {
             console.log("Existing USer");
-            this.updateNotificationTime();
+            this.settingUpNotification();
           }
           else {
             console.log("new user");
-            userService.user = new User().deserialize({id: 1, tasks: [], categories: categoryService.masterData() });
+            userService.user = new User().deserialize({ id: 1, tasks: [], categories: categoryService.masterData() });
             userService.saveUser();
-            this.setUpNotification()
+            this.settingUpNotification()
           }
           this.rootPage = TabsPage
           splashScreen.hide();
@@ -47,32 +47,24 @@ export class MyApp {
     });
   }
 
-  // setting up the notification for new user, after this only updating of this notification 
-  // will take place with notification id as reference
+  // scheduling the notification to today`s 8am if app is opened before 8am
+  // else scheduling the notification to tomorrow`s 8am.
 
-  setUpNotification() {
-    // getting tomorrow`s date with 8 am as time
-    var notificationTime = new Date(new Date(new Date().setHours(8,0,0,0)).setDate(new Date().getDate() + 1))
-    this.localNotifications.schedule({
-      id: this.userService.user.id,
-      at: notificationTime
-    })
-    console.log("notification set");
+  settingUpNotification() {
+    var notificationTime;
 
-  }
-
-  // updating notification time only when the app is open after 8am
-  // else just updating the text to not disturb the set notfication at 8am
-
-  updateNotificationTime(){
-    
-    if(new Date().getHours() <= 7){
+    if (new Date().getHours() <= 7) {
+      // getting todays date with 8 am as time
+      notificationTime = new Date(new Date(new Date().setHours(8, 0, 0, 0)))
+      this.localNotifications.schedule({
+        id: this.userService.user.id,
+        at: notificationTime
+      })
     }
-    else
-    {
+    else {
       // getting tomorrow`s date with 8 am as time
-      var notificationTime = new Date(new Date(new Date().setHours(8,0,0,0)).setDate(new Date().getDate() + 1))
-      this.localNotifications.update({
+      notificationTime = new Date(new Date(new Date().setHours(8, 0, 0, 0)).setDate(new Date().getDate() + 1))
+      this.localNotifications.schedule({
         id: this.userService.user.id,
         at: notificationTime
       })
