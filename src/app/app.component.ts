@@ -51,24 +51,24 @@ export class MyApp {
   // else scheduling the notification to tomorrow`s 8am.
 
   settingUpNotification() {
-    var notificationTime;
+    // var notificationTime;
 
-    if (new Date().getHours() <= 7) {
-      // getting todays date with 8 am as time
-      notificationTime = new Date(new Date(new Date().setHours(8, 0, 0, 0)))
-      this.localNotifications.schedule({
-        id: this.userService.user.id,
-        at: notificationTime
-      })
-    }
-    else {
-      // getting tomorrow`s date with 8 am as time
-      notificationTime = new Date(new Date(new Date().setHours(8, 0, 0, 0)).setDate(new Date().getDate() + 1))
-      this.localNotifications.schedule({
-        id: this.userService.user.id,
-        at: notificationTime
-      })
-    }
+    // if (new Date().getHours() <= 7) {
+    //   // getting todays date with 8 am as time
+    //   notificationTime = new Date(new Date(new Date().setHours(8, 0, 0, 0)))
+    //   this.localNotifications.schedule({
+    //     id: this.userService.user.id,
+    //     at: notificationTime
+    //   })
+    // }
+    // else {
+    //   // getting tomorrow`s date with 8 am as time
+    //   notificationTime = new Date(new Date(new Date().setHours(8, 0, 0, 0)).setDate(new Date().getDate() + 1))
+    //   this.localNotifications.schedule({
+    //     id: this.userService.user.id,
+    //     at: notificationTime
+    //   })
+    // }
 
   }
 }
